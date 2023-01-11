@@ -15,8 +15,9 @@ const darkTheme = createTheme({
       contrastText: '#E1E2E5',
     },
     neutral: {
-      ash: '#E1E2E5',
-      gray: '#C0C7CD',
+      main: '#E1E2E5',
+      light: '#EEF4F9',
+      dark: '#C0C7CD',
     },
     background: {
       default: '#243037',

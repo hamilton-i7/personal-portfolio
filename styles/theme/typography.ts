@@ -68,7 +68,7 @@ const typography: TypographyOptions = {
   },
   body1: {
     fontSize: '1.6rem',
-    fontWeight: 500,
+    fontWeight: 400,
     lineHeight: '2.6rem',
     [`@media (min-width:${breakpoints.values.tablet}px)`]: {
       fontSize: '1.8rem',

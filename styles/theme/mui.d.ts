@@ -20,15 +20,17 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/styles/createPalette' {
   export interface Palette {
     neutral: {
-      gray: string
-      ash: string
+      main: string
+      light: string
+      dark: string
     }
   }
 
   export interface PaletteOptions {
     neutral: {
-      gray: string
-      ash: string
+      main: string
+      light: string
+      dark: string
     }
   }
 }
