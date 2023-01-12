@@ -1,8 +1,8 @@
 import { Box, Stack, Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
 import React from 'react'
-import ElevatedButton from '../common/button/elevated-button'
-import TextButton from '../common/button/text-button'
+import ElevatedButton from '../../button/elevated-button'
+import TextButton from '../../button/text-button'
 
 const PatternRingsLeft = () => {
   return (
@@ -40,18 +40,20 @@ const PatternRingsRight = () => {
   )
 }
 
-const Hero = () => {
+const Hero = React.forwardRef((_, ref) => {
   const { t } = useTranslation()
 
   return (
     <Stack
       component='header'
+      ref={ref}
       sx={{
         p: { xs: '5.6rem 1.6rem 3.2rem' },
         background:
           'linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), center / cover no-repeat url(/me.jpg)',
         minHeight: '100vh',
         color: theme => theme.palette.common.white,
+        position: 'relative',
       }}>
       <PatternRingsLeft />
       <PatternRingsRight />
@@ -90,6 +92,6 @@ const Hero = () => {
       </Stack>
     </Stack>
   )
-}
+})
 
 export default Hero

@@ -1,4 +1,3 @@
-import * as React from 'react'
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
@@ -17,11 +16,15 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import LanguageIcon from '@mui/icons-material/LanguageRounded'
 import Link from './link'
-import { Stack } from '@mui/material'
+import { alpha, Stack } from '@mui/material'
+import React, { useEffect, useState } from 'react'
 
 type NavbarProps = {
   children?: React.ReactElement
+  enableBlurBackground: boolean
 }
+
+const TRANSPARENT_BACKGROUND_LIMIT = 100
 
 const navItems = [
   { name: 'about', href: '#about' },
@@ -30,19 +33,33 @@ const navItems = [
 ]
 const DRAWER_WIDTH = 240
 
-const Navbar = ({ children }: NavbarProps) => {
-  const [mobileOpen, setMobileOpen] = React.useState(false)
+const Navbar = ({ children, enableBlurBackground }: NavbarProps) => {
+  const [mobileOpen, setMobileOpen] = useState(false)
+  const [scrollPosition, setScrollPosition] = useState(0)
+  const enableBlur = scrollPosition >= TRANSPARENT_BACKGROUND_LIMIT
+
+  const handleScroll = () => {
+    setScrollPosition(window.scrollY)
+  }
 
   const handleDrawerToggle = () => {
     setMobileOpen(prevState => !prevState)
   }
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
       <List>
         {navItems.map(item => (
           <ListItem key={item.name} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }}>
+            <ListItemButton sx={{ textAlign: 'center' }} href={item.href}>
               <ListItemText
                 primary={item.name}
                 primaryTypographyProps={{
@@ -88,6 +105,19 @@ const Navbar = ({ children }: NavbarProps) => {
           position: 'fixed',
           top: 0,
           left: 0,
+          backdropFilter: 'none',
+          transition: theme =>
+            theme.transitions.create(['backdrop-filter', 'background-color'], {
+              duration: theme.transitions.duration.short,
+              easing: theme.transitions.easing.easeIn,
+            }),
+          ...(enableBlur && {
+            backdropFilter: 'blur(0.8rem)',
+            ...(enableBlurBackground && {
+              backgroundColor: theme =>
+                alpha(theme.palette.background.default, 0.8),
+            }),
+          }),
         }}>
         <Toolbar
           sx={{
@@ -135,6 +165,7 @@ const Navbar = ({ children }: NavbarProps) => {
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: DRAWER_WIDTH,
+              backgroundColor: theme => theme.palette.primary.dark,
             },
           }}>
           {drawer}

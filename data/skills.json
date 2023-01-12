@@ -1,0 +1,86 @@
+[
+  {
+    "name": "HTML",
+    "link": "https://developer.mozilla.org/en-US/docs/Web/HTML"
+  },
+  {
+    "name": "CSS",
+    "link": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+  },
+  {
+    "name": "Javascript",
+    "link": "https://www.javascript.com/"
+  },
+  {
+    "name": "Typescript",
+    "link": "https://www.typescriptlang.org/"
+  },
+  {
+    "name": "Material UI",
+    "link": "https://mui.com/"
+  },
+  {
+    "name": "React",
+    "link": "https://reactjs.org/"
+  },
+  {
+    "name": "Next.js",
+    "link": "https://nextjs.org/"
+  },
+  {
+    "name": "Bootstrap",
+    "link": "https://getbootstrap.com/"
+  },
+  {
+    "name": "SQL",
+    "link": "https://www.w3schools.com/sql/"
+  },
+  {
+    "name": "MongoDB",
+    "link": "https://www.mongodb.com/"
+  },
+  {
+    "name": "Firebase",
+    "link": "https://firebase.google.com/"
+  },
+  {
+    "name": "Git",
+    "link": "https://git-scm.com/"
+  },
+  {
+    "name": "npm",
+    "link": "https://www.npmjs.com/"
+  },
+  {
+    "name": "REST",
+    "link": "https://restfulapi.net/"
+  },
+  {
+    "name": "Sass",
+    "link": "https://sass-lang.com/"
+  },
+  {
+    "name": "Node.js",
+    "link": "https://nodejs.org/en/"
+  },
+  {
+    "name": "Figma",
+    "link": "https://www.figma.com/"
+  },
+  {
+    "name": "Express",
+    "link": "https://expressjs.com/"
+  },
+  {
+    "name": "Nest",
+    "link": "https://nestjs.com/"
+  },
+  {
+    "name": "Strapi",
+    "link": "https://strapi.io/"
+  },
+  {
+    "name": "Prisma",
+    "link": "https://www.prisma.io/"
+  }
+]

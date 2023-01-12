@@ -1,6 +1,14 @@
 {
   "greeting": "Hello, I'm",
-  "hero-description": "Based in Panama, I’m a front-end developer ready to make an impactful change in your business by transforming raw code into visually stunning, responsive designs and intuitive user experiences.",
+  "hero-description": "Based in Panama, I'm a front-end developer ready to make an impactful change in your business by transforming raw code into visually stunning, responsive designs and intuitive user experiences.",
   "contact-me": "Contact me",
-  "view-resume": "View resume"
+  "view-resume": "View resume",
+  "about": "About",
+  "about-description-1": "I'm a front-end developer with a serious passion to offer great UI/UX experiences.",
+  "about-description-2": "Well-organized person, problem solver, with a keen eye to details. I take pride in delivering fast, responsive sites. Gamer, TV lover and fan of a nice evening with a cup of coffee and good music.",
+  "developer": "Developer",
+  "team-player": "Team player",
+  "problem-solver": "Problem solver",
+  "gamer": "Gamer",
+  "musician": "Musician"
 }

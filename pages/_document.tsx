@@ -4,7 +4,7 @@ import { globalStyles } from '../styles/globals'
 
 export default function Document() {
   return (
-    <Html lang='en'>
+    <Html lang='en' style={{ scrollBehavior: 'smooth' }}>
       <Head>
         <link rel='preconnect' href='https://fonts.googleapis.com' />
         <link
