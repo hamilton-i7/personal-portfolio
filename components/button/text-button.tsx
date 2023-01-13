@@ -5,10 +5,11 @@ type TextButtonProps = MuiButtonProps & {
   children: React.ReactNode
 }
 
-const TextButton = ({ children, sx, ...props }: TextButtonProps) => {
+const TextButton = ({ children, startIcon, sx, ...props }: TextButtonProps) => {
   return (
     <MuiButton
       variant='text'
+      startIcon={startIcon}
       sx={{
         padding: 0,
         color: theme => theme.palette.common.white,
@@ -31,7 +32,7 @@ const TextButton = ({ children, sx, ...props }: TextButtonProps) => {
           left: '50%',
           transform: 'translateX(-50%)',
           height: '0.2rem',
-          width: '110%',
+          width: '95%',
           background: theme => theme.palette.primary.light,
           borderRadius: '0.4rem',
         },

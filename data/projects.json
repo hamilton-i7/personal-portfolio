@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Kanban",
+    "description": "Challenge provided by Frontend mentor. Kanban is a task management app inspired by Trello.",
+    "stack": ["Typescript", "React", "Material UI", "Node.js", "Mongo DB"],
+    "liveSite": "/",
+    "repository": "https://github.com/hamilton-i7/kanban",
+    "img": "/kanban.jpg"
+  },
+  {
+    "name": "Designo",
+    "description": "Website for Designo, a digital agency specialized in web, app & graphic design.",
+    "stack": ["Next.js", "Material UI", "Strapi", "Google Maps API"],
+    "liveSite": "/",
+    "repository": "https://github.com/hamilton-i7/designo",
+    "img": "/designo.png"
+  }
+]

@@ -6,6 +6,7 @@ import About from '../components/pages/home/about'
 import Navbar from '../components/navbar'
 import { useRef } from 'react'
 import { useInViewport } from 'react-in-viewport'
+import Projects from '../components/pages/home/projects'
 
 export default function Home() {
   const heroRef = useRef<HTMLElement>(null)
@@ -27,6 +28,7 @@ export default function Home() {
         <>
           <Hero ref={heroRef} />
           <About />
+          <Projects />
         </>
       </Navbar>
     </>
