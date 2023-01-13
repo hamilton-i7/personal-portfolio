@@ -4,14 +4,14 @@ import React from 'react'
 import ElevatedButton from '../../button/elevated-button'
 import TextButton from '../../button/text-button'
 
-const PatternRingsLeft = () => {
+const PatternRingsRight = () => {
   return (
     <Box
       sx={{
         position: 'absolute',
         width: '53rem',
         height: '12.9rem',
-        right: { xs: '-39rem' },
+        right: { xs: '-39rem', sm: '-35rem' },
         bottom: { xs: '1.8rem' },
         background: 'no-repeat url(/pattern-rings.svg)',
         backgroundSize: 'cover',
@@ -22,14 +22,14 @@ const PatternRingsLeft = () => {
   )
 }
 
-const PatternRingsRight = () => {
+const PatternRingsLeft = () => {
   return (
     <Box
       sx={{
         position: 'absolute',
         width: '53rem',
         height: '12.9rem',
-        left: { xs: '-34.2rem' },
+        left: { xs: '-34.2rem', sm: '-26.5rem' },
         top: { xs: '7.2rem' },
         background: 'no-repeat url(/pattern-rings.svg)',
         backgroundSize: 'cover',
@@ -48,16 +48,21 @@ const Hero = React.forwardRef((_, ref) => {
       component='header'
       ref={ref}
       sx={{
-        p: { xs: '5.6rem 1.6rem 3.2rem' },
+        p: { xs: '5.6rem 1.6rem 7.2rem', sm: '5.6rem 3.2rem 7.2rem' },
         background:
           'linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), center / cover no-repeat url(/me.jpg)',
         minHeight: '100vh',
         color: theme => theme.palette.common.white,
         position: 'relative',
       }}>
-      <PatternRingsLeft />
       <PatternRingsRight />
-      <Typography variant='h1' sx={{ mt: '9.6rem' }}>
+      <PatternRingsLeft />
+      <Typography
+        variant='h1'
+        sx={{
+          mt: '9.6rem',
+          mb: { sm: '4.8rem' },
+        }}>
         <Typography component='span' variant='h3'>
           {t('greeting')}
         </Typography>
@@ -70,7 +75,7 @@ const Hero = React.forwardRef((_, ref) => {
               content: "''",
               height: '0.4rem',
               width: '97%',
-              background: theme => theme.palette.primary.main,
+              background: theme => theme.palette.primary.light,
               position: 'absolute',
               bottom: '0.25rem',
               left: 0,
@@ -80,15 +85,29 @@ const Hero = React.forwardRef((_, ref) => {
           Juan Hamilton.
         </Box>
       </Typography>
-      <Typography variant='body1' sx={{ my: '2.4rem', textAlign: 'center' }}>
+      <Typography
+        variant='body1'
+        sx={{
+          my: { xs: '2.4rem', sm: 0 },
+          mb: { sm: '6.4rem' },
+          textAlign: { xs: 'center', sm: 'left' },
+          width: { sm: '44.5rem' },
+        }}>
         {t('hero-description')}
       </Typography>
       <Stack
         sx={{
           alignItems: 'center',
+          flexDirection: { xs: 'column', sm: 'row' },
+          gap: { xs: '1.6rem', sm: '3.2rem' },
         }}>
-        <ElevatedButton sx={{ mb: '1.6rem' }}>{t('contact-me')}</ElevatedButton>
-        <TextButton>{t('view-resume')}</TextButton>
+        <ElevatedButton>{t('contact-me')}</ElevatedButton>
+        <TextButton
+          sx={{
+            mb: { sm: '1rem' },
+          }}>
+          {t('view-resume')}
+        </TextButton>
       </Stack>
     </Stack>
   )

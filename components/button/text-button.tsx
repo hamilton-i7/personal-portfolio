@@ -3,9 +3,16 @@ import MuiButton, { ButtonProps as MuiButtonProps } from '@mui/material/Button'
 
 type TextButtonProps = MuiButtonProps & {
   children: React.ReactNode
+  showUnderline?: boolean
 }
 
-const TextButton = ({ children, startIcon, sx, ...props }: TextButtonProps) => {
+const TextButton = ({
+  children,
+  startIcon,
+  showUnderline = true,
+  sx,
+  ...props
+}: TextButtonProps) => {
   return (
     <MuiButton
       variant='text'
@@ -25,17 +32,19 @@ const TextButton = ({ children, startIcon, sx, ...props }: TextButtonProps) => {
         '& .MuiTouchRipple-root': {
           display: 'none',
         },
-        '::after': {
-          content: "''",
-          position: 'absolute',
-          bottom: '-1rem',
-          left: '50%',
-          transform: 'translateX(-50%)',
-          height: '0.2rem',
-          width: '95%',
-          background: theme => theme.palette.primary.main,
-          borderRadius: '0.4rem',
-        },
+        ...(showUnderline && {
+          '::after': {
+            content: "''",
+            position: 'absolute',
+            bottom: '-1rem',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            height: '0.2rem',
+            width: '95%',
+            background: theme => theme.palette.primary.main,
+            borderRadius: '0.4rem',
+          },
+        }),
         ...sx,
       }}
       {...props}>

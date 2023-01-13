@@ -12,6 +12,7 @@ const cloudProps: Omit<ICloud, 'children'> = {
       alignItems: 'center',
       width: '100%',
       paddingTop: 40,
+      maxWidth: 'unset',
     },
   },
   options: {
@@ -23,7 +24,6 @@ const cloudProps: Omit<ICloud, 'children'> = {
     wheelZoom: false,
     fadeIn: 3_000,
     freezeDecel: true,
-    maxSpeed: 0.06,
     freezeActive: true,
     shuffleTags: true,
     shape: 'sphere',

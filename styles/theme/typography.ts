@@ -82,10 +82,10 @@ const typography: TypographyOptions = {
     letterSpacing: '-0.022rem',
   },
   button: {
-    fontSize: '1.6rem',
-    fontWeight: 700,
-    lineHeight: '2.6rem',
-    letterSpacing: '0.229rem',
+    fontSize: '1.5rem',
+    fontWeight: 500,
+    lineHeight: '2.1rem',
+    letterSpacing: '0.125rem',
     textTransform: 'uppercase',
   },
   overline: {

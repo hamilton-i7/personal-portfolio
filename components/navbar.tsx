@@ -1,10 +1,9 @@
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
-import IconButton from '@mui/material/IconButton'
+import MuiIconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import MenuIcon from '@mui/icons-material/Menu'
-import Button from '@mui/material/Button'
 import Divider from '@mui/material/Divider'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
@@ -18,6 +17,8 @@ import LanguageIcon from '@mui/icons-material/LanguageRounded'
 import Link from './link'
 import { alpha, Stack } from '@mui/material'
 import React, { useEffect, useState } from 'react'
+import TextButton from './button/text-button'
+import IconButton from './button/icon-button'
 
 type NavbarProps = {
   children?: React.ReactElement
@@ -128,27 +129,42 @@ const Navbar = ({ children, enableBlurBackground }: NavbarProps) => {
               hamilton
             </Typography>
           </Link>
-          <IconButton
+          <MuiIconButton
             color='inherit'
             aria-label='open drawer'
             edge='start'
             onClick={handleDrawerToggle}
             sx={{ display: { sm: 'none' } }}>
             <MenuIcon fontSize='large' />
-          </IconButton>
-          <Typography
-            variant='h6'
-            component='div'
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' } }}>
-            MUI
-          </Typography>
-          <Box sx={{ display: { xs: 'none', sm: 'block' } }}>
+          </MuiIconButton>
+          <Stack
+            direction='row'
+            sx={{
+              display: { xs: 'none', sm: 'flex' },
+              columnGap: '0.8rem',
+            }}>
             {navItems.map(item => (
-              <Button key={item.name} sx={{ color: '#fff' }}>
+              <TextButton key={item.name} showUnderline={false}>
                 {item.name}
-              </Button>
+              </TextButton>
             ))}
-          </Box>
+          </Stack>
+          <Stack
+            direction='row'
+            sx={{
+              alignItems: 'center',
+              display: { xs: 'none', sm: 'flex' },
+            }}>
+            <IconButton>
+              <GitHubIcon fontSize='large' />
+            </IconButton>
+            <IconButton>
+              <LinkedInIcon fontSize='large' />
+            </IconButton>
+            <IconButton>
+              <LanguageIcon fontSize='large' />
+            </IconButton>
+          </Stack>
         </Toolbar>
       </AppBar>
       <Box component='nav' aria-label='navigation drawer'>

@@ -16,7 +16,7 @@ const About = () => {
       sx={{
         minHeight: '100vh',
         backgroundColor: theme => theme.palette.background.default,
-        p: '7.2rem 1.6rem',
+        p: { xs: '7.2rem 1.6rem', sm: '7.2rem 3.2rem' },
       }}>
       <Box>
         <Typography

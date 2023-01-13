@@ -10,7 +10,6 @@ import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded'
 import Divider from '@mui/material/Divider'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
-import Link from '../../link'
 import IconButton from '../../button/icon-button'
 
 const PatternRings = () => {
@@ -21,7 +20,7 @@ const PatternRings = () => {
         width: '53rem',
         height: '12.9rem',
         left: { xs: '-25rem', lg: '-20.5rem' },
-        bottom: { xs: '15rem', sm: '14.5rem', lg: '22.5rem' },
+        bottom: { xs: '15rem', sm: '20rem', lg: '22.5rem' },
         background: 'no-repeat url(/pattern-rings.svg)',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -39,15 +38,21 @@ const Contact = () => {
       id='contact'
       component='footer'
       sx={{
-        padding: '7.2rem 1.6rem',
+        py: '7.2rem',
+        px: { xs: '1.6rem', sm: '3.2rem' },
         backgroundColor: theme => theme.palette.background.default,
       }}>
       <PatternRings />
-      <Stack>
+      <Stack
+        sx={{
+          alignItems: { xs: 'center' },
+        }}>
         <Box
           sx={{
             mb: { xs: '4.8rem' },
             textAlign: { xs: 'center' },
+            width: '100%',
+            maxWidth: '44.5rem',
           }}>
           <Typography
             variant='h4'
@@ -62,13 +67,18 @@ const Contact = () => {
             variant='body1'
             sx={{
               color: theme => theme.palette.neutral.dark,
-              mb: { xs: '0.8rem' },
+              mb: { xs: '0.8rem', sm: '3.2rem' },
             }}>
             {t('contact-description')}
           </Typography>
           <TextButton>{t('view-resume')}</TextButton>
         </Box>
-        <Stack component='form'>
+        <Stack
+          component='form'
+          sx={{
+            width: '100%',
+            maxWidth: '44.5rem',
+          }}>
           <TextField
             label={t('name')}
             sx={{
@@ -93,7 +103,7 @@ const Contact = () => {
           <TextButton
             sx={{
               alignSelf: 'end',
-              mb: { xs: '7.2rem' },
+              mb: { xs: '7.2rem', sm: '10.4rem' },
             }}>
             {t('send-message')}
           </TextButton>
@@ -104,7 +114,7 @@ const Contact = () => {
               mb: { xs: '4.2rem' },
               alignSelf: 'end',
             }}>
-            <ArrowUpwardRoundedIcon />
+            <ArrowUpwardRoundedIcon fontSize='large' />
           </ElevatedIconButton>
         </Stack>
       </Stack>
@@ -118,19 +128,16 @@ const Contact = () => {
         direction='row'
         sx={{
           justifyContent: 'center',
+          gap: '0.8rem',
         }}>
-        <Link href='https://github.com/hamilton-i7'>
-          <IconButton aria-label='Github' sx={{ mr: '0.8rem' }}>
-            <GitHubIcon sx={{ fontSize: '2.4rem' }} />
-          </IconButton>
-        </Link>
-        <Link
+        <IconButton aria-label='Github' href='https://github.com/hamilton-i7'>
+          <GitHubIcon sx={{ fontSize: '2.4rem' }} />
+        </IconButton>
+        <IconButton
           aria-label='Linkedin'
           href='https://www.linkedin.com/in/juan-hamilton-edwards/'>
-          <IconButton>
-            <LinkedInIcon sx={{ fontSize: '2.4rem' }} />
-          </IconButton>
-        </Link>
+          <LinkedInIcon sx={{ fontSize: '2.4rem' }} />
+        </IconButton>
       </Stack>
     </Box>
   )

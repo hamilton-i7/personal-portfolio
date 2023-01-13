@@ -18,6 +18,7 @@ const Projects = () => {
     <Box id='projects'>
       <Carousel
         fullHeightHover={false}
+        height='100vh'
         autoPlay={false}
         swipe={false}
         navButtonsAlwaysInvisible={true}
@@ -76,7 +77,7 @@ const Project = ({ project, position }: ProjectProps) => {
         position: 'absolute',
         bottom: 0,
         left: 0,
-        padding: '1.6rem',
+        padding: { xs: '1.6rem', sm: '1.6rem 3.2rem' },
         mb: '3.2rem',
         transition: theme =>
           theme.transitions.create('opacity', {
@@ -123,6 +124,7 @@ const Project = ({ project, position }: ProjectProps) => {
         zIndex: 2,
         opacity: 0,
         position: 'relative',
+        px: { xs: '1.6rem', sm: '3.2rem' },
         transition: theme =>
           theme.transitions.create('opacity', {
             duration: theme.transitions.duration.shortest,
@@ -163,8 +165,11 @@ const Project = ({ project, position }: ProjectProps) => {
       <Stack
         sx={{
           alignItems: 'center',
+          flexDirection: { xs: 'column', sm: 'row' },
+          justifyContent: 'center',
+          gap: '3.2rem',
         }}>
-        <TextButton startIcon={<OpenInNewRounded />} sx={{ mb: '3.2rem' }}>
+        <TextButton startIcon={<OpenInNewRounded />}>
           {t('view-site')}
         </TextButton>
         <TextButton startIcon={<GithubIcon />}>{t('view-code')}</TextButton>
@@ -231,7 +236,7 @@ const Project = ({ project, position }: ProjectProps) => {
         sx={{
           height: '100%',
           width: '100%',
-          backgroundColor: theme => alpha(theme.palette.common.black, 0.48),
+          backgroundColor: theme => alpha(theme.palette.common.black, 0.72),
           position: 'absolute',
           bottom: 0,
           left: 0,
