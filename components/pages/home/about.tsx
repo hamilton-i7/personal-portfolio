@@ -28,7 +28,7 @@ const About = () => {
         <Typography
           variant='h2'
           component='h3'
-          sx={{ color: theme => theme.palette.primary.light, mb: '2.4rem' }}>
+          sx={{ color: theme => theme.palette.primary.main, mb: '2.4rem' }}>
           <Traits />
         </Typography>
         <Typography

@@ -70,7 +70,7 @@ const Hero = React.forwardRef((_, ref) => {
               content: "''",
               height: '0.4rem',
               width: '97%',
-              background: theme => theme.palette.primary.light,
+              background: theme => theme.palette.primary.main,
               position: 'absolute',
               bottom: '0.25rem',
               left: 0,

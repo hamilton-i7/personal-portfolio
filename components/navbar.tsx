@@ -165,7 +165,7 @@ const Navbar = ({ children, enableBlurBackground }: NavbarProps) => {
             '& .MuiDrawer-paper': {
               boxSizing: 'border-box',
               width: DRAWER_WIDTH,
-              backgroundColor: theme => theme.palette.primary.dark,
+              backgroundColor: theme => theme.palette.secondary.dark,
             },
           }}>
           {drawer}

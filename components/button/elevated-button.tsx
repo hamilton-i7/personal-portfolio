@@ -13,7 +13,7 @@ const ElevatedButton = ({ children, sx, ...props }: ElevatedButtonProps) => {
       sx={{
         borderRadius: '3.2rem',
         backgroundColor: theme => theme.palette.neutral.light,
-        color: theme => theme.palette.primary.main,
+        color: theme => theme.palette.secondary.main,
         height: '4rem',
         px: '2.4rem',
         ':hover': {

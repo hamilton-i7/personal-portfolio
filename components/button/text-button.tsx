@@ -19,7 +19,7 @@ const TextButton = ({ children, startIcon, sx, ...props }: TextButtonProps) => {
             duration: theme.transitions.duration.shortest,
           }),
         ':hover': {
-          color: theme => theme.palette.primary.light,
+          color: theme => theme.palette.primary.main,
           background: 'none',
         },
         '& .MuiTouchRipple-root': {
@@ -33,7 +33,7 @@ const TextButton = ({ children, startIcon, sx, ...props }: TextButtonProps) => {
           transform: 'translateX(-50%)',
           height: '0.2rem',
           width: '95%',
-          background: theme => theme.palette.primary.light,
+          background: theme => theme.palette.primary.main,
           borderRadius: '0.4rem',
         },
         ...sx,

@@ -39,7 +39,7 @@ const SkillCloud = () => {
         <Link key={skill.name} href={skill.link}>
           <Typography
             component='a'
-            sx={{ color: theme => theme.palette.primary.light }}>
+            sx={{ color: theme => theme.palette.primary.main }}>
             {skill.name}
           </Typography>
         </Link>

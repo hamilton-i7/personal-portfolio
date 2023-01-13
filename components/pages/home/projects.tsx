@@ -123,7 +123,10 @@ const Project = ({ project, position }: ProjectProps) => {
         zIndex: 2,
         opacity: 0,
         position: 'relative',
-        transition: 'none',
+        transition: theme =>
+          theme.transitions.create('opacity', {
+            duration: theme.transitions.duration.shortest,
+          }),
       }}>
       <Typography
         className='project-name'
