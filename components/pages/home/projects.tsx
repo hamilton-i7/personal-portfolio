@@ -91,9 +91,9 @@ const Project = ({ project, position }: ProjectProps) => {
         component='span'
         sx={{
           fontWeight: 700,
-          fontSize: '20rem',
-          lineHeight: '20rem',
-          letterSpacing: '0.4rem',
+          fontSize: { xs: '20rem', tablet: '40rem' },
+          lineHeight: { xs: '20rem', tablet: '40rem' },
+          letterSpacing: { xs: '0.4rem', tablet: '0.8rem' },
           bottom: 0,
           position: 'absolute',
           zIndex: 1,
@@ -109,7 +109,7 @@ const Project = ({ project, position }: ProjectProps) => {
           color: theme => theme.palette.neutral.main,
           zIndex: 2,
           textAlign: 'center',
-          mb: { xs: '1.6rem' },
+          mb: { xs: '1.6rem', tablet: '4.8rem' },
         }}>
         {project.name}
       </Typography>
