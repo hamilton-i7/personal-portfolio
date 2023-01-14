@@ -4,6 +4,7 @@ import MuiButton, { ButtonProps as MuiButtonProps } from '@mui/material/Button'
 type TextButtonProps = MuiButtonProps & {
   children: React.ReactNode
   showUnderline?: boolean
+  target?: React.HTMLAttributeAnchorTarget
 }
 
 const TextButton = ({

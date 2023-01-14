@@ -1,5 +1,6 @@
 import { Box, Stack, Typography } from '@mui/material'
 import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
 import React from 'react'
 import ElevatedButton from '../../button/elevated-button'
 import TextButton from '../../button/text-button'
@@ -42,6 +43,9 @@ const PatternRingsLeft = () => {
 
 const Hero = React.forwardRef((_, ref) => {
   const { t } = useTranslation()
+  const { locale } = useRouter()
+
+  const resumeLink = locale === 'en' ? '/resume.pdf' : '/hoja-de-vida.pdf'
 
   return (
     <Stack
@@ -105,6 +109,8 @@ const Hero = React.forwardRef((_, ref) => {
         }}>
         <ElevatedButton>{t('contact-me')}</ElevatedButton>
         <TextButton
+          href={resumeLink}
+          target='_blank'
           sx={{
             mb: { sm: '1rem' },
           }}>

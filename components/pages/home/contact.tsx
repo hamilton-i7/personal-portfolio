@@ -11,6 +11,7 @@ import Divider from '@mui/material/Divider'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import IconButton from '../../button/icon-button'
+import { useRouter } from 'next/router'
 
 const PatternRings = () => {
   return (
@@ -32,6 +33,9 @@ const PatternRings = () => {
 
 const Contact = () => {
   const { t } = useTranslation()
+  const { locale } = useRouter()
+
+  const resumeLink = locale === 'en' ? '/resume.pdf' : '/hoja-de-vida.pdf'
 
   return (
     <Stack
@@ -74,7 +78,9 @@ const Contact = () => {
             }}>
             {t('contact-description')}
           </Typography>
-          <TextButton>{t('view-resume')}</TextButton>
+          <TextButton href={resumeLink} target='_blank'>
+            {t('view-resume')}
+          </TextButton>
         </Box>
         <Stack
           component='form'
