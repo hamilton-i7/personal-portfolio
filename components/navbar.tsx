@@ -19,6 +19,7 @@ import { alpha, Stack } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import TextButton from './button/text-button'
 import IconButton from './button/icon-button'
+import { useTranslation } from 'next-i18next'
 
 type NavbarProps = {
   children?: React.ReactElement
@@ -26,15 +27,17 @@ type NavbarProps = {
 }
 
 const TRANSPARENT_BACKGROUND_LIMIT = 100
-
-const navItems = [
-  { name: 'about', href: '#about' },
-  { name: 'projects', href: '#projects' },
-  { name: 'contact', href: '#contact' },
-]
 const DRAWER_WIDTH = 240
 
 const Navbar = ({ children, enableBlurBackground }: NavbarProps) => {
+  const { t } = useTranslation()
+
+  const navItems = [
+    { name: t('about'), href: '#about' },
+    { name: t('projects'), href: '#projects' },
+    { name: t('contact'), href: '#contact' },
+  ]
+
   const [mobileOpen, setMobileOpen] = useState(false)
   const [scrollPosition, setScrollPosition] = useState(0)
   const enableBlur = scrollPosition >= TRANSPARENT_BACKGROUND_LIMIT
@@ -144,7 +147,10 @@ const Navbar = ({ children, enableBlurBackground }: NavbarProps) => {
               columnGap: { xs: '0.8rem', lg: '2.4rem' },
             }}>
             {navItems.map(item => (
-              <TextButton key={item.name} showUnderline={false}>
+              <TextButton
+                key={item.name}
+                showUnderline={false}
+                href={item.href}>
                 {item.name}
               </TextButton>
             ))}

@@ -4,7 +4,7 @@
   "contact-me": "Contact me",
   "view-resume": "View resume",
   "about": "About",
-  "about-description-1": "I'm a front-end developer with a serious passion to offer great UI/UX experiences.",
+  "about-description-1": "I'm a front-end developer with a serious passion to offer great UI/UX.",
   "about-description-2": "Well-organized person, problem solver, with a keen eye to details. I take pride in delivering fast, responsive sites. Gamer, TV lover and fan of a nice evening with a cup of coffee and good music.",
   "developer": "Developer",
   "team-player": "Team player",
@@ -19,5 +19,6 @@
   "email": "Email",
   "message": "Message",
   "send-message": "Send message",
-  "go-to-top": "Go to top"
+  "go-to-top": "Go to top",
+  "projects": "Projects"
 }

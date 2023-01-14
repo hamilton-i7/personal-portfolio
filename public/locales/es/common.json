@@ -1,3 +1,24 @@
 {
-  "greeting": "Hola, soy"
+  "greeting": "Hola, soy",
+  "hero-description": "Soy desarrollador front-end ubicado en Panamá, listo para hacer cambios impactantes en tu negocio al transformar simples líneas de código en diseños responsivos y visualmente alumbrantes, y por supuesto, experiencias de usuario intuitivas.",
+  "contact-me": "Contáctame",
+  "view-resume": "Ver hoja de vida",
+  "about": "Sobre mí",
+  "about-description-1": "Soy desarrollador front-end con una inmensa pasión para ofrecer excelentes experiencias e interfaces de usuario.",
+  "about-description-2": "Organizado, soluciono problemas y poseo buen ojo y atención hacia los detalles. Me enorgullezco en entregar sitios webs que son rápidos y responsivos. Gamer, amante de shows de TV y fanático de una buena tarde con una taza de café y buena música.",
+  "developer": "Desarrollador",
+  "team-player": "Trabajo en equipo",
+  "problem-solver": "Solucionador de problemas",
+  "gamer": "Gamer",
+  "musician": "Músico",
+  "view-site": "Visitar sitio",
+  "view-code": "Ver código",
+  "contact": "Contacto",
+  "contact-description": "¿Estás en busca de un desarrollador front-end hábil, talentoso y con quien puedas contar? Busco formar parte de un equipo y ayudar crecer a tu negocio.",
+  "name": "Nombre",
+  "email": "Correo",
+  "message": "Mensaje",
+  "send-message": "Enviar mensaje",
+  "go-to-top": "Volver al inicio",
+  "projects": "Proyectos"
 }
