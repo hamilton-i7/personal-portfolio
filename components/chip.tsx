@@ -21,7 +21,9 @@ const Chip = ({ label, component = 'div' }: ChipProps) => {
         border: theme => `${theme.palette.common.white} 0.1rem solid`,
         color: theme => theme.palette.common.white,
       }}>
-      <Typography variant='button'>{label}</Typography>
+      <Typography variant='button' sx={{ lineHeight: 0 }}>
+        {label}
+      </Typography>
     </Box>
   )
 }

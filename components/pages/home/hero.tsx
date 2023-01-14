@@ -97,7 +97,7 @@ const Hero = React.forwardRef((_, ref) => {
           my: { xs: '2.4rem', sm: 0 },
           mb: { sm: '6.4rem' },
           textAlign: { xs: 'center', sm: 'left' },
-          width: { sm: '44.5rem', desktop: '54.7rem' },
+          width: { sm: '44.5rem', desktop: '54.7rem', tv: '65rem' },
         }}>
         {t('hero-description')}
       </Typography>
