@@ -45,6 +45,7 @@ const Contact = () => {
         py: '7.2rem',
         px: { xs: '1.6rem', sm: '3.2rem', lg: '16.5rem', tv: '25rem' },
         backgroundColor: theme => theme.palette.background.default,
+        minHeight: '100vh',
       }}>
       <PatternRings />
       <Stack
@@ -53,6 +54,8 @@ const Contact = () => {
           flexDirection: { lg: 'row' },
           justifyContent: { lg: 'space-between' },
           gap: { lg: '4.8rem', desktop: '20%' },
+          width: '100%',
+          flexGrow: 1,
         }}>
         <Box
           sx={{
@@ -117,35 +120,42 @@ const Contact = () => {
           </TextButton>
         </Stack>
       </Stack>
-      <ElevatedIconButton
-        aria-label={t('go-to-top').toString()}
-        href='#'
-        sx={{
-          mb: { xs: '4.2rem' },
-          alignSelf: 'end',
-        }}>
-        <ArrowUpwardRoundedIcon fontSize='large' />
-      </ElevatedIconButton>
-      <Divider
-        sx={{
-          mb: { xs: '3.2rem' },
-          backgroundColor: theme => theme.palette.neutral.dark,
-        }}
-      />
       <Stack
-        direction='row'
         sx={{
-          justifyContent: 'center',
-          gap: '0.8rem',
+          width: '100%',
+          mt: 'auto',
         }}>
-        <IconButton aria-label='Github' href='https://github.com/hamilton-i7'>
-          <GitHubIcon sx={{ fontSize: '2.4rem' }} />
-        </IconButton>
-        <IconButton
-          aria-label='Linkedin'
-          href='https://www.linkedin.com/in/juan-hamilton-edwards/'>
-          <LinkedInIcon sx={{ fontSize: '2.4rem' }} />
-        </IconButton>
+        <ElevatedIconButton
+          aria-label={t('go-to-top').toString()}
+          href='#'
+          sx={{
+            mb: { xs: '4.2rem' },
+            alignSelf: 'end',
+          }}>
+          <ArrowUpwardRoundedIcon fontSize='large' />
+        </ElevatedIconButton>
+        <Divider
+          flexItem
+          sx={{
+            mb: { xs: '3.2rem' },
+            backgroundColor: theme => theme.palette.neutral.dark,
+          }}
+        />
+        <Stack
+          direction='row'
+          sx={{
+            justifyContent: 'center',
+            gap: '0.8rem',
+          }}>
+          <IconButton aria-label='Github' href='https://github.com/hamilton-i7'>
+            <GitHubIcon sx={{ fontSize: '2.4rem' }} />
+          </IconButton>
+          <IconButton
+            aria-label='Linkedin'
+            href='https://www.linkedin.com/in/juan-hamilton-edwards/'>
+            <LinkedInIcon sx={{ fontSize: '2.4rem' }} />
+          </IconButton>
+        </Stack>
       </Stack>
     </Stack>
   )
