@@ -15,6 +15,18 @@ import { useRouter } from 'next/router'
 import axios from 'axios'
 import { EMAIL_REGEX } from '../../../utils/regex'
 import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded'
+import Collapse from '@mui/material/Collapse'
+import Alert from '../../alert'
+
+type AlertState = {
+  show: boolean
+  type: 'success' | 'error'
+}
+
+const initialAlertState: AlertState = {
+  show: false,
+  type: 'success',
+}
 
 const PatternRings = () => {
   return (
@@ -50,6 +62,11 @@ const Contact = () => {
   const [messageError, setMessageError] = useState(false)
 
   const [enableFeedback, setEnableFeedback] = useState(false)
+  const [enableButton, setEnableButton] = useState(true)
+
+  const [alertState, setAlertState] = useState<AlertState>(initialAlertState)
+  const alertMessage =
+    alertState.type === 'error' ? t('email-not-sent') : t('email-sent')
 
   const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setName(event.target.value)
@@ -72,19 +89,49 @@ const Contact = () => {
     setMessageError(event.target.value.trim().length === 0)
   }
 
+  const handleAlertState = (newState: Partial<AlertState>) => {
+    setAlertState(prev => ({
+      ...prev,
+      ...newState,
+    }))
+  }
+
   const handleSendEmail = async () => {
     setEnableFeedback(true)
-    if (!isValidForm()) {
-      console.log('Form is invalid')
-      return
-    }
-    // const response = await axios.post(`${process.env.url}/api/email`, {
-    //   name,
-    //   email,
-    //   message,
-    // })
+    if (!isValidForm()) return
 
-    console.log('Form is valid')
+    setEnableButton(false)
+
+    try {
+      const { status } = await axios.post('/api/email', {
+        name,
+        email,
+        message,
+      })
+
+      if (status === 200) {
+        resetForm()
+        handleAlertState({ show: true, type: 'success' })
+      } else {
+        handleAlertState({ show: true, type: 'error' })
+      }
+    } catch (error) {
+      handleAlertState({ show: true, type: 'error' })
+      console.log(error)
+    } finally {
+      setEnableButton(true)
+    }
+  }
+
+  const resetForm = () => {
+    setName('')
+    setNameError(false)
+
+    setEmail('')
+    setEmailError(false)
+
+    setMessage('')
+    setMessageError(false)
   }
 
   const isValidForm = () => {
@@ -115,8 +162,24 @@ const Contact = () => {
         px: { xs: '1.6rem', sm: '3.2rem', lg: '16.5rem', tv: '25rem' },
         backgroundColor: theme => theme.palette.background.default,
         minHeight: '100vh',
+        position: 'relative',
       }}>
       <PatternRings />
+      <Collapse
+        in={alertState.show}
+        sx={{
+          position: 'absolute',
+          top: '6.4rem',
+          left: 0,
+          width: '100%',
+          px: { xs: '1.6rem', sm: '3.2rem', lg: '16.5rem', tv: '25rem' },
+        }}>
+        <Alert
+          severity={alertState.type}
+          message={alertMessage}
+          onClose={() => handleAlertState({ show: false })}
+        />
+      </Collapse>
       <Stack
         sx={{
           alignItems: { xs: 'center' },
@@ -231,6 +294,7 @@ const Contact = () => {
           />
           <TextButton
             onClick={handleSendEmail}
+            disabled={!enableButton}
             sx={{
               alignSelf: 'end',
               mb: { xs: '7.2rem', sm: '10.4rem' },

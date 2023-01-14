@@ -22,5 +22,8 @@
   "go-to-top": "Volver al inicio",
   "projects": "Proyectos",
   "invalid-format": "Correo inválido",
-  "empty-error": "Este campo no puede estar vacío"
+  "empty-error": "Este campo no puede estar vacío",
+  "email-sent": "¡Correo enviado!",
+  "email-not-sent": "Hubo un problem al intentar enviar este correo",
+  "close": "Cerrar"
 }
