@@ -77,7 +77,8 @@ const Project = ({ project, position }: ProjectProps) => {
         position: 'absolute',
         bottom: 0,
         left: 0,
-        padding: { xs: '1.6rem', sm: '1.6rem 3.2rem' },
+        py: '1.6rem',
+        px: { xs: '1.6rem', sm: '3.2rem', lg: '16.5rem', tv: '25rem' },
         mb: '3.2rem',
         transition: theme =>
           theme.transitions.create('opacity', {
@@ -117,18 +118,21 @@ const Project = ({ project, position }: ProjectProps) => {
   )
 
   const details = (
-    <Box
+    <Stack
       className='details'
       sx={{
         textAlign: 'center',
         zIndex: 2,
         opacity: 0,
         position: 'relative',
-        px: { xs: '1.6rem', sm: '3.2rem' },
+        px: { xs: '1.6rem', sm: '3.2rem', lg: '16.5rem', tv: '25rem' },
         transition: theme =>
           theme.transitions.create('opacity', {
             duration: theme.transitions.duration.shortest,
           }),
+        justifyContent: 'center',
+        alignItems: 'center',
+        width: '100%',
       }}>
       <Typography
         className='project-name'
@@ -174,7 +178,7 @@ const Project = ({ project, position }: ProjectProps) => {
         </TextButton>
         <TextButton startIcon={<GithubIcon />}>{t('view-code')}</TextButton>
       </Stack>
-    </Box>
+    </Stack>
   )
 
   return (

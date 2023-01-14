@@ -34,25 +34,28 @@ const Contact = () => {
   const { t } = useTranslation()
 
   return (
-    <Box
+    <Stack
       id='contact'
       component='footer'
       sx={{
         py: '7.2rem',
-        px: { xs: '1.6rem', sm: '3.2rem' },
+        px: { xs: '1.6rem', sm: '3.2rem', lg: '16.5rem', tv: '25rem' },
         backgroundColor: theme => theme.palette.background.default,
       }}>
       <PatternRings />
       <Stack
         sx={{
           alignItems: { xs: 'center' },
+          flexDirection: { lg: 'row' },
+          justifyContent: { lg: 'space-between' },
+          gap: { lg: '4.8rem', desktop: '20%' },
         }}>
         <Box
           sx={{
             mb: { xs: '4.8rem' },
-            textAlign: { xs: 'center' },
+            textAlign: { xs: 'center', lg: 'left' },
             width: '100%',
-            maxWidth: '44.5rem',
+            maxWidth: { xs: '44.5rem', xl: '60rem' },
           }}>
           <Typography
             variant='h4'
@@ -77,7 +80,6 @@ const Contact = () => {
           component='form'
           sx={{
             width: '100%',
-            maxWidth: '44.5rem',
           }}>
           <TextField
             label={t('name')}
@@ -107,17 +109,17 @@ const Contact = () => {
             }}>
             {t('send-message')}
           </TextButton>
-          <ElevatedIconButton
-            aria-label={t('go-to-top').toString()}
-            href='#'
-            sx={{
-              mb: { xs: '4.2rem' },
-              alignSelf: 'end',
-            }}>
-            <ArrowUpwardRoundedIcon fontSize='large' />
-          </ElevatedIconButton>
         </Stack>
       </Stack>
+      <ElevatedIconButton
+        aria-label={t('go-to-top').toString()}
+        href='#'
+        sx={{
+          mb: { xs: '4.2rem' },
+          alignSelf: 'end',
+        }}>
+        <ArrowUpwardRoundedIcon fontSize='large' />
+      </ElevatedIconButton>
       <Divider
         sx={{
           mb: { xs: '3.2rem' },
@@ -139,7 +141,7 @@ const Contact = () => {
           <LinkedInIcon sx={{ fontSize: '2.4rem' }} />
         </IconButton>
       </Stack>
-    </Box>
+    </Stack>
   )
 }
 

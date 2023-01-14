@@ -1,4 +1,5 @@
-import { Typography } from '@mui/material'
+import Box, { BoxProps } from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 import React from 'react'
 import { Cloud, ICloud } from 'react-icon-cloud'
 import skills from '../data/skills.json'
@@ -32,19 +33,29 @@ const cloudProps: Omit<ICloud, 'children'> = {
   },
 }
 
-const SkillCloud = () => {
+const SkillCloud = (props: BoxProps) => {
   return (
-    <Cloud id='fdaf3773-3e8e-46c0-b696-7a4934c72217' {...cloudProps}>
-      {skills.map(skill => (
-        <Link key={skill.name} href={skill.link}>
-          <Typography
-            component='a'
-            sx={{ color: theme => theme.palette.primary.main }}>
-            {skill.name}
-          </Typography>
-        </Link>
-      ))}
-    </Cloud>
+    <Box {...props}>
+      <Cloud
+        id='fdaf3773-3e8e-46c0-b696-7a4934c72217'
+        {...cloudProps}
+        canvasProps={{
+          style: {
+            width: '100%',
+            maxWidth: 'unset',
+          },
+        }}>
+        {skills.map(skill => (
+          <Link key={skill.name} href={skill.link}>
+            <Typography
+              component='a'
+              sx={{ color: theme => theme.palette.primary.main }}>
+              {skill.name}
+            </Typography>
+          </Link>
+        ))}
+      </Cloud>
+    </Box>
   )
 }
 

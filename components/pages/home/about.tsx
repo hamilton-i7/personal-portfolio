@@ -16,9 +16,16 @@ const About = () => {
       sx={{
         minHeight: '100vh',
         backgroundColor: theme => theme.palette.background.default,
-        p: { xs: '7.2rem 1.6rem', sm: '7.2rem 3.2rem' },
+        py: '7.2rem',
+        px: { xs: '1.6rem', sm: '3.2rem', lg: '16.5rem', tv: '25rem' },
+        flexDirection: { lg: 'row' },
+        alignItems: { lg: 'center' },
+        gap: { lg: '2.4rem' },
       }}>
-      <Box>
+      <Box
+        sx={{
+          flexBasis: { lg: '45%', tv: '40%' },
+        }}>
         <Typography
           variant='h4'
           component='h2'
@@ -38,7 +45,7 @@ const About = () => {
           {t('about-description-2')}
         </Typography>
       </Box>
-      <SkillCloud />
+      <SkillCloud sx={{ flexBasis: { lg: '55%', tv: '60%' } }} />
     </Stack>
   )
 }

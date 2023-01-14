@@ -141,7 +141,7 @@ const Navbar = ({ children, enableBlurBackground }: NavbarProps) => {
             direction='row'
             sx={{
               display: { xs: 'none', sm: 'flex' },
-              columnGap: '0.8rem',
+              columnGap: { xs: '0.8rem', lg: '2.4rem' },
             }}>
             {navItems.map(item => (
               <TextButton key={item.name} showUnderline={false}>
