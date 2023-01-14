@@ -20,5 +20,7 @@
   "message": "Mensaje",
   "send-message": "Enviar mensaje",
   "go-to-top": "Volver al inicio",
-  "projects": "Proyectos"
+  "projects": "Proyectos",
+  "invalid-format": "Correo inválido",
+  "empty-error": "Este campo no puede estar vacío"
 }

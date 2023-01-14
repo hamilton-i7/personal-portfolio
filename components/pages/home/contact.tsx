@@ -2,7 +2,7 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import Typography from '@mui/material/Typography'
 import { useTranslation } from 'next-i18next'
-import React from 'react'
+import React, { useState } from 'react'
 import ElevatedIconButton from '../../button/elevated-icon-button'
 import TextButton from '../../button/text-button'
 import TextField from '../../text-field'
@@ -12,6 +12,9 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import IconButton from '../../button/icon-button'
 import { useRouter } from 'next/router'
+import axios from 'axios'
+import { EMAIL_REGEX } from '../../../utils/regex'
+import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded'
 
 const PatternRings = () => {
   return (
@@ -36,6 +39,72 @@ const Contact = () => {
   const { locale } = useRouter()
 
   const resumeLink = locale === 'en' ? '/resume.pdf' : '/hoja-de-vida.pdf'
+
+  const [name, setName] = useState('')
+  const [nameError, setNameError] = useState(false)
+
+  const [email, setEmail] = useState('')
+  const [emailError, setEmailError] = useState(false)
+
+  const [message, setMessage] = useState('')
+  const [messageError, setMessageError] = useState(false)
+
+  const [enableFeedback, setEnableFeedback] = useState(false)
+
+  const handleNameChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setName(event.target.value)
+    if (!enableFeedback) return
+
+    setNameError(event.target.value.trim().length === 0)
+  }
+
+  const handleEmailChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(event.target.value)
+    if (!enableFeedback) return
+
+    setEmailError(!EMAIL_REGEX.test(event.target.value))
+  }
+
+  const handleMessageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setMessage(event.target.value)
+    if (!enableFeedback) return
+
+    setMessageError(event.target.value.trim().length === 0)
+  }
+
+  const handleSendEmail = async () => {
+    setEnableFeedback(true)
+    if (!isValidForm()) {
+      console.log('Form is invalid')
+      return
+    }
+    // const response = await axios.post(`${process.env.url}/api/email`, {
+    //   name,
+    //   email,
+    //   message,
+    // })
+
+    console.log('Form is valid')
+  }
+
+  const isValidForm = () => {
+    let isValid = true
+
+    if (name.trim().length === 0) {
+      isValid = false
+      setNameError(true)
+    }
+    if (!EMAIL_REGEX.test(email)) {
+      isValid = false
+      setEmailError(true)
+    }
+    if (message.trim().length === 0) {
+      isValid = false
+      setMessageError(true)
+    }
+
+    return isValid
+  }
 
   return (
     <Stack
@@ -92,26 +161,76 @@ const Contact = () => {
           }}>
           <TextField
             label={t('name')}
+            inputProps={{ name: 'from_name' }}
+            value={name}
             sx={{
               mb: { xs: '3.2rem' },
             }}
+            error={nameError}
+            helperText={
+              nameError ? (
+                <Typography variant='overline'>{t('empty-error')}</Typography>
+              ) : (
+                ' '
+              )
+            }
+            endIcon={
+              nameError && (
+                <ErrorOutlineRoundedIcon color='error' fontSize='large' />
+              )
+            }
+            onChange={handleNameChange}
           />
           <TextField
             label={t('email')}
             type='email'
+            value={email}
             sx={{
               mb: { xs: '3.2rem' },
             }}
+            error={emailError}
+            helperText={
+              emailError ? (
+                <Typography variant='overline'>
+                  {t('invalid-format')}
+                </Typography>
+              ) : (
+                ' '
+              )
+            }
+            endIcon={
+              emailError && (
+                <ErrorOutlineRoundedIcon color='error' fontSize='large' />
+              )
+            }
+            onChange={handleEmailChange}
           />
           <TextField
             label={t('message')}
+            inputProps={{ name: 'message' }}
             multiline
             minRows={4}
+            value={message}
             sx={{
               mb: { xs: '4rem' },
             }}
+            error={messageError}
+            helperText={
+              messageError ? (
+                <Typography variant='overline'>{t('empty-error')}</Typography>
+              ) : (
+                ' '
+              )
+            }
+            endIcon={
+              messageError && (
+                <ErrorOutlineRoundedIcon color='error' fontSize='large' />
+              )
+            }
+            onChange={handleMessageChange}
           />
           <TextButton
+            onClick={handleSendEmail}
             sx={{
               alignSelf: 'end',
               mb: { xs: '7.2rem', sm: '10.4rem' },

@@ -20,5 +20,7 @@
   "message": "Message",
   "send-message": "Send message",
   "go-to-top": "Go to top",
-  "projects": "Projects"
+  "projects": "Projects",
+  "invalid-format": "Invalid email",
+  "empty-error": "Field cannot be empty"
 }
