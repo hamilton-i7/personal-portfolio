@@ -17,7 +17,7 @@
       "es": "Desafío publicado por Frontend mentor. Descubre información básica acerca de todos los países del mundo."
     },
     "stack": ["React", "Styled Components", "REST Countries API"],
-    "liveSite": "https://hamilton-i7.github.io/countries/#/",
+    "liveSite": "https://countries-frontendmentor.vercel.app/#/",
     "repository": "https://github.com/hamilton-i7/countries",
     "img": "/countries-preview.png"
   },

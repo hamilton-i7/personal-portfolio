@@ -21,7 +21,7 @@ export default function Home() {
         <title>Juan Hamilton</title>
         <meta name='description' content="Juan Hamilton's portfolio." />
         <meta name='viewport' content='width=device-width, initial-scale=1' />
-        <link rel='icon' href='/favicon.ico' />
+        <link rel='icon' href='/favicon.png' />
       </Head>
       <Navbar
         aria-label='Top navigation bar'
