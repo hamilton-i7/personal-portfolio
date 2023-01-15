@@ -26,7 +26,7 @@ type AlertState = {
 }
 
 const initialAlertState: AlertState = {
-  show: false,
+  show: true,
   type: 'success',
 }
 
@@ -169,11 +169,12 @@ const Contact = () => {
       <Collapse
         in={alertState.show}
         sx={{
-          position: 'absolute',
-          top: '6.4rem',
+          position: 'fixed',
+          top: '7.2rem',
           left: 0,
           width: '100%',
           px: { xs: '1.6rem', sm: '3.2rem', lg: '16.5rem', tv: '25rem' },
+          zIndex: 10_000,
         }}>
         <Alert
           severity={alertState.type}
