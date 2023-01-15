@@ -119,7 +119,6 @@ const Contact = () => {
       }
     } catch (error) {
       handleAlertState({ show: true, type: 'error' })
-      console.log(error)
     } finally {
       setSendingMessage(false)
     }
