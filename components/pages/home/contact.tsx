@@ -26,7 +26,7 @@ type AlertState = {
 }
 
 const initialAlertState: AlertState = {
-  show: true,
+  show: false,
   type: 'success',
 }
 
