@@ -18,9 +18,10 @@ export default function Document() {
         />
         <CssBaseline />
         <GlobalStyles styles={globalStyles} />
+        <meta property='og:site_name' content='Juan Hamilton' />
         <meta property='og:title' content='Juan Hamilton | Portfolio' />
         <meta property='og:type' content='website' />
-        <meta property='og:image' content='/me.jpg' />
+        <meta property='og:image' content='/me-compressed.jpg' />
         <meta property='og:image:type' content='image/jpg' />
         <meta property='og:image:width' content='120' />
         <meta property='og:image:height' content='160' />
