@@ -5,7 +5,7 @@
       "en": "Website for Designo, a digital agency specialized in web, app & graphic design.",
       "es": "Sitio web para Designo, una agencia digital especializada en diseño para páginas web, aplicaciones móbiles y diseño gráfico."
     },
-    "stack": ["Next.js", "Material UI", "Strapi", "Google Maps API"],
+    "stack": ["Next.js", "Material UI", "Google Maps API"],
     "liveSite": "https://designo-frontendmentor.vercel.app",
     "repository": "https://github.com/hamilton-i7/designo",
     "img": "/designo-preview.png"
@@ -16,14 +16,20 @@
       "en": "Challenge by Frontend mentor. Find out basic information about countries all over the world.",
       "es": "Desafío publicado por Frontend mentor. Descubre información básica acerca de todos los países del mundo."
     },
-    "stack": [
-      "React",
-      "Styled Components",
-      "React Spinners",
-      "REST Countries API"
-    ],
+    "stack": ["React", "Styled Components", "REST Countries API"],
     "liveSite": "https://hamilton-i7.github.io/countries/#/",
     "repository": "https://github.com/hamilton-i7/countries",
     "img": "/countries-preview.png"
+  },
+  {
+    "name": "Huddle",
+    "description": {
+      "en": "Yet another challenge by Frontend mentor. Huddle re-imagines the way we build communities.",
+      "es": "Otro desafío por parte de Frontend mentor. Huddlle intenta replantear la manera en que socializamos y construímos comunidades."
+    },
+    "stack": ["HTML", "CSS", "Sass"],
+    "liveSite": "https://huddle-alternating.vercel.app/",
+    "repository": "https://github.com/hamilton-i7/huddle_alternating",
+    "img": "/huddle-preview.png"
   }
 ]
