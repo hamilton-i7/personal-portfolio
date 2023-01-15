@@ -18,6 +18,7 @@ import Collapse from '@mui/material/Collapse'
 import Alert from '../../alert'
 import { GITHUB_LINK, LINKEDIN_LINK } from '../../../utils/constants'
 import IconButton from '@mui/material/IconButton'
+import CircularProgress from '@mui/material/CircularProgress'
 
 type AlertState = {
   show: boolean
@@ -63,7 +64,7 @@ const Contact = () => {
   const [messageError, setMessageError] = useState(false)
 
   const [enableFeedback, setEnableFeedback] = useState(false)
-  const [enableButton, setEnableButton] = useState(true)
+  const [sendingMessage, setSendingMessage] = useState(false)
 
   const [alertState, setAlertState] = useState<AlertState>(initialAlertState)
   const alertMessage =
@@ -101,7 +102,7 @@ const Contact = () => {
     setEnableFeedback(true)
     if (!isValidForm()) return
 
-    setEnableButton(false)
+    setSendingMessage(true)
 
     try {
       const { status } = await axios.post('/api/email', {
@@ -120,7 +121,7 @@ const Contact = () => {
       handleAlertState({ show: true, type: 'error' })
       console.log(error)
     } finally {
-      setEnableButton(true)
+      setSendingMessage(false)
     }
   }
 
@@ -295,7 +296,12 @@ const Contact = () => {
           />
           <TextButton
             onClick={handleSendEmail}
-            disabled={!enableButton}
+            disabled={sendingMessage}
+            startIcon={
+              sendingMessage && (
+                <CircularProgress color='inherit' size='2.4rem' />
+              )
+            }
             sx={{
               alignSelf: 'end',
               mb: { xs: '7.2rem', sm: '10.4rem' },
