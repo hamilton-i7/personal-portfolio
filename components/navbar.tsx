@@ -1,7 +1,7 @@
 import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
 import Toolbar from '@mui/material/Toolbar'
-import MuiIconButton from '@mui/material/IconButton'
+import IconButton from '@mui/material/IconButton'
 import Typography from '@mui/material/Typography'
 import MenuIcon from '@mui/icons-material/Menu'
 import Divider from '@mui/material/Divider'
@@ -15,11 +15,16 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import LanguageIcon from '@mui/icons-material/LanguageRounded'
 import Link from './link'
-import { alpha, Stack } from '@mui/material'
+import { alpha, Stack, useTheme } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import TextButton from './button/text-button'
-import IconButton from './button/icon-button'
 import { useTranslation } from 'next-i18next'
+import LanguageMenu from './language-menu'
+import { useSmallScreenMatcher } from '../utils/responsive'
+import { COOKIE_LIFESPAN, GITHUB_LINK, LINKEDIN_LINK } from '../utils/constants'
+import { useRouter } from 'next/router'
+import { useCookies } from 'react-cookie'
+import { Cookie } from '../utils/cookie'
 
 type NavbarProps = {
   children?: React.ReactElement
@@ -31,6 +36,10 @@ const DRAWER_WIDTH = 240
 
 const Navbar = ({ children, enableBlurBackground }: NavbarProps) => {
   const { t } = useTranslation()
+  const router = useRouter()
+  const { pathname, asPath, query } = router
+  const theme = useTheme()
+  const matchesSmallScreen = useSmallScreenMatcher(theme)
 
   const navItems = [
     { name: t('about'), href: '#about' },
@@ -42,12 +51,46 @@ const Navbar = ({ children, enableBlurBackground }: NavbarProps) => {
   const [scrollPosition, setScrollPosition] = useState(0)
   const enableBlur = scrollPosition >= TRANSPARENT_BACKGROUND_LIMIT
 
+  const [toolbarAnchor, setToolbarAnchor] = useState<HTMLElement | null>(null)
+  const [drawerAnchor, setDrawerAnchor] = useState<HTMLElement | null>(null)
+  const openLanguageMenu = Boolean(toolbarAnchor || drawerAnchor)
+
   const handleScroll = () => {
     setScrollPosition(window.scrollY)
   }
 
   const handleDrawerToggle = () => {
     setMobileOpen(prevState => !prevState)
+  }
+
+  const handleOpenLanguageMenu = (
+    event: React.MouseEvent<HTMLButtonElement>,
+  ) => {
+    if (matchesSmallScreen) {
+      setToolbarAnchor(event.currentTarget)
+      return
+    }
+    setDrawerAnchor(event.currentTarget)
+  }
+
+  const handleCloseLanguageMenu = () => {
+    setToolbarAnchor(null)
+    setDrawerAnchor(null)
+  }
+
+  const handleChangeLanguage = (locale: 'en' | 'es') => {
+    setLanguageCookie(locale)
+    router.push({ pathname, query }, asPath, { locale })
+    handleCloseLanguageMenu()
+  }
+
+  const setCookies = useCookies<keyof Cookie, Cookie>()[1]
+
+  const setLanguageCookie = (locale: 'en' | 'es') => {
+    setCookies('NEXT_LOCALE', locale, {
+      maxAge: COOKIE_LIFESPAN,
+      secure: process.env.NODE_ENV === 'production',
+    })
   }
 
   useEffect(() => {
@@ -59,11 +102,14 @@ const Navbar = ({ children, enableBlurBackground }: NavbarProps) => {
   }, [])
 
   const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }}>
+    <Box sx={{ textAlign: 'center' }}>
       <List>
         {navItems.map(item => (
           <ListItem key={item.name} disablePadding>
-            <ListItemButton sx={{ textAlign: 'center' }} href={item.href}>
+            <ListItemButton
+              sx={{ textAlign: 'center' }}
+              href={item.href}
+              onClick={handleDrawerToggle}>
               <ListItemText
                 primary={item.name}
                 primaryTypographyProps={{
@@ -81,18 +127,20 @@ const Navbar = ({ children, enableBlurBackground }: NavbarProps) => {
           justifyContent: 'center',
           mt: '1.6rem',
         }}>
-        <Link href=''>
+        <IconButton href={GITHUB_LINK} target='_blank'>
           <GitHubIcon fontSize='large' />
-        </Link>
-        <Link href=''>
+        </IconButton>
+        <IconButton href={LINKEDIN_LINK} target='_blank'>
           <LinkedInIcon
             fontSize='large'
             sx={{
               mx: '1.2rem',
             }}
           />
-        </Link>
-        <LanguageIcon fontSize='large' />
+        </IconButton>
+        <IconButton onClick={handleOpenLanguageMenu}>
+          <LanguageIcon fontSize='large' />
+        </IconButton>
       </Stack>
     </Box>
   )
@@ -126,20 +174,28 @@ const Navbar = ({ children, enableBlurBackground }: NavbarProps) => {
         <Toolbar
           sx={{
             justifyContent: 'space-between',
+            px: { xs: '1.6rem', sm: '3.2rem', lg: '16.5rem', tv: '25rem' },
           }}>
+          <LanguageMenu
+            anchorEl={matchesSmallScreen ? toolbarAnchor : drawerAnchor}
+            open={openLanguageMenu}
+            onClose={handleCloseLanguageMenu}
+            onSpanishClick={() => handleChangeLanguage('es')}
+            onEnglishClick={() => handleChangeLanguage('en')}
+          />
           <Link href='/'>
             <Typography variant='subtitle1' component='a'>
               hamilton
             </Typography>
           </Link>
-          <MuiIconButton
+          <IconButton
             color='inherit'
             aria-label='open drawer'
             edge='start'
             onClick={handleDrawerToggle}
             sx={{ display: { sm: 'none' } }}>
             <MenuIcon fontSize='large' />
-          </MuiIconButton>
+          </IconButton>
           <Stack
             direction='row'
             sx={{
@@ -160,14 +216,15 @@ const Navbar = ({ children, enableBlurBackground }: NavbarProps) => {
             sx={{
               alignItems: 'center',
               display: { xs: 'none', sm: 'flex' },
+              gap: '1.6rem',
             }}>
-            <IconButton>
+            <IconButton href={GITHUB_LINK} target='_blank'>
               <GitHubIcon fontSize='large' />
             </IconButton>
-            <IconButton>
+            <IconButton href={LINKEDIN_LINK} target='_blank'>
               <LinkedInIcon fontSize='large' />
             </IconButton>
-            <IconButton>
+            <IconButton onClick={handleOpenLanguageMenu}>
               <LanguageIcon fontSize='large' />
             </IconButton>
           </Stack>

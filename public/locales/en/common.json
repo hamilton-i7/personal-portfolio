@@ -25,5 +25,6 @@
   "empty-error": "Field cannot be empty",
   "email-sent": "Email was sent successfully!",
   "email-not-sent": "There was a problem while trying to send the email",
-  "close": "Close"
+  "close": "Close",
+  "change-language": "Change language"
 }

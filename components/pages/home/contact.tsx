@@ -10,13 +10,14 @@ import ArrowUpwardRoundedIcon from '@mui/icons-material/ArrowUpwardRounded'
 import Divider from '@mui/material/Divider'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
-import IconButton from '../../button/icon-button'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 import { EMAIL_REGEX } from '../../../utils/regex'
 import ErrorOutlineRoundedIcon from '@mui/icons-material/ErrorOutlineRounded'
 import Collapse from '@mui/material/Collapse'
 import Alert from '../../alert'
+import { GITHUB_LINK, LINKEDIN_LINK } from '../../../utils/constants'
+import IconButton from '@mui/material/IconButton'
 
 type AlertState = {
   show: boolean
@@ -330,12 +331,13 @@ const Contact = () => {
             justifyContent: 'center',
             gap: '0.8rem',
           }}>
-          <IconButton aria-label='Github' href='https://github.com/hamilton-i7'>
+          <IconButton aria-label='Github' href={GITHUB_LINK} target='_blank'>
             <GitHubIcon sx={{ fontSize: '2.4rem' }} />
           </IconButton>
           <IconButton
             aria-label='Linkedin'
-            href='https://www.linkedin.com/in/juan-hamilton-edwards/'>
+            href={LINKEDIN_LINK}
+            target='_blank'>
             <LinkedInIcon sx={{ fontSize: '2.4rem' }} />
           </IconButton>
         </Stack>
