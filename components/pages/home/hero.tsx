@@ -107,7 +107,7 @@ const Hero = React.forwardRef((_, ref) => {
           flexDirection: { xs: 'column', sm: 'row' },
           gap: { xs: '1.6rem', sm: '3.2rem' },
         }}>
-        <ElevatedButton>{t('contact-me')}</ElevatedButton>
+        <ElevatedButton href='#contact'>{t('contact-me')}</ElevatedButton>
         <TextButton
           href={resumeLink}
           target='_blank'

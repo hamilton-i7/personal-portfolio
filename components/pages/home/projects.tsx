@@ -173,10 +173,18 @@ const Project = ({ project, position }: ProjectProps) => {
           justifyContent: 'center',
           gap: '3.2rem',
         }}>
-        <TextButton startIcon={<OpenInNewRounded />}>
+        <TextButton
+          startIcon={<OpenInNewRounded />}
+          href={project.liveSite}
+          target='_blank'>
           {t('view-site')}
         </TextButton>
-        <TextButton startIcon={<GithubIcon />}>{t('view-code')}</TextButton>
+        <TextButton
+          startIcon={<GithubIcon />}
+          href={project.repository}
+          target='_blank'>
+          {t('view-code')}
+        </TextButton>
       </Stack>
     </Stack>
   )

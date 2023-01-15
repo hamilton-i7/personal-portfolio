@@ -106,9 +106,9 @@ const Contact = () => {
 
     try {
       const { status } = await axios.post('/api/email', {
-        name,
-        email,
-        message,
+        name: name.trim(),
+        email: email.toLowerCase().trim(),
+        message: message.trim(),
       })
 
       if (status === 200) {
