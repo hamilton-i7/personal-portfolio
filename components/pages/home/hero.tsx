@@ -121,4 +121,6 @@ const Hero = React.forwardRef((_, ref) => {
   )
 })
 
+Hero.displayName = 'Hero'
+
 export default Hero
