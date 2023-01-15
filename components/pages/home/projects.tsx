@@ -10,9 +10,12 @@ import TextButton from '../../button/text-button'
 import { useTranslation } from 'next-i18next'
 import OpenInNewRounded from '@mui/icons-material/OpenInNewRounded'
 import GithubIcon from '@mui/icons-material/GitHub'
+import { useRouter } from 'next/router'
 
 const Projects = () => {
   const theme = useTheme()
+  const router = useRouter()
+  const locale = router.locale as 'en' | 'en'
 
   return (
     <Box id='projects'>
@@ -46,7 +49,14 @@ const Projects = () => {
         {projects.map((project, i) => {
           const position = i + 1 < 10 ? `0${i + 1}` : (i + 1).toString()
 
-          return <Project key={i} project={project} position={position} />
+          return (
+            <Project
+              key={i}
+              project={project}
+              position={position}
+              locale={locale}
+            />
+          )
         })}
       </Carousel>
     </Box>
@@ -55,7 +65,7 @@ const Projects = () => {
 
 interface IProject {
   name: string
-  description: string
+  description: { en: string; es: string }
   stack: string[]
   liveSite: string
   repository: string
@@ -65,9 +75,10 @@ interface IProject {
 type ProjectProps = {
   project: IProject
   position: string
+  locale: 'en' | 'es'
 }
 
-const Project = ({ project, position }: ProjectProps) => {
+const Project = ({ project, position, locale }: ProjectProps) => {
   const { t } = useTranslation()
 
   const preview = (
@@ -149,7 +160,7 @@ const Project = ({ project, position }: ProjectProps) => {
       <Typography
         variant='body1'
         sx={{ color: theme => theme.palette.neutral.dark, mb: '3.2rem' }}>
-        {project.description}
+        {project.description[locale]}
       </Typography>
       <Stack
         direction='row'

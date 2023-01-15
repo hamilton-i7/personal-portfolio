@@ -1,18 +1,29 @@
 [
   {
-    "name": "Kanban",
-    "description": "Challenge provided by Frontend mentor. Kanban is a task management app inspired by Trello.",
-    "stack": ["Typescript", "React", "Material UI", "Node.js", "Mongo DB"],
-    "liveSite": "/",
-    "repository": "https://github.com/hamilton-i7/kanban",
-    "img": "/kanban.jpg"
+    "name": "Designo",
+    "description": {
+      "en": "Website for Designo, a digital agency specialized in web, app & graphic design.",
+      "es": "Sitio web para Designo, una agencia digital especializada en diseño para páginas web, aplicaciones móbiles y diseño gráfico."
+    },
+    "stack": ["Next.js", "Material UI", "Strapi", "Google Maps API"],
+    "liveSite": "https://designo-frontendmentor.vercel.app",
+    "repository": "https://github.com/hamilton-i7/designo",
+    "img": "/designo-preview.png"
   },
   {
-    "name": "Designo",
-    "description": "Website for Designo, a digital agency specialized in web, app & graphic design.",
-    "stack": ["Next.js", "Material UI", "Strapi", "Google Maps API"],
-    "liveSite": "/",
-    "repository": "https://github.com/hamilton-i7/designo",
-    "img": "/designo.png"
+    "name": "Countries",
+    "description": {
+      "en": "Challenge by Frontend mentor. Find out basic information about countries all over the world.",
+      "es": "Desafío publicado por Frontend mentor. Descubre información básica acerca de todos los países del mundo."
+    },
+    "stack": [
+      "React",
+      "Styled Components",
+      "React Spinners",
+      "REST Countries API"
+    ],
+    "liveSite": "https://hamilton-i7.github.io/countries/#/",
+    "repository": "https://github.com/hamilton-i7/countries",
+    "img": "/countries-preview.png"
   }
 ]
