@@ -23,8 +23,15 @@ const Projects = () => {
         fullHeightHover={false}
         height='100vh'
         autoPlay={false}
-        swipe={false}
-        navButtonsAlwaysInvisible={true}
+        navButtonsAlwaysVisible={true}
+        navButtonsWrapperProps={{
+          style: {
+            padding: '0 clamp(1.6rem, 10%, 25rem)',
+            bottom: '-1.6rem',
+            top: 'unset',
+            zIndex: 1_000,
+          },
+        }}
         indicatorContainerProps={{
           style: {
             position: 'absolute',
