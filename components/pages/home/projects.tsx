@@ -11,9 +11,12 @@ import { useTranslation } from 'next-i18next'
 import OpenInNewRounded from '@mui/icons-material/OpenInNewRounded'
 import GithubIcon from '@mui/icons-material/GitHub'
 import { useRouter } from 'next/router'
+import { useTabletScreenMatcher } from '../../../utils/responsive'
 
 const Projects = () => {
   const theme = useTheme()
+  const matchesTabletScreen = useTabletScreenMatcher(theme)
+
   const router = useRouter()
   const locale = router.locale as 'en' | 'en'
 
@@ -23,13 +26,17 @@ const Projects = () => {
         fullHeightHover={false}
         height='100vh'
         autoPlay={false}
+        swipe={false}
         navButtonsAlwaysVisible={true}
         navButtonsWrapperProps={{
           style: {
-            padding: '0 clamp(1.6rem, 10%, 25rem)',
             bottom: '-1.6rem',
             top: 'unset',
             zIndex: 1_000,
+            ...(matchesTabletScreen && {
+              bottom: 'unset',
+              top: 'calc(50% - 70px)',
+            }),
           },
         }}
         indicatorContainerProps={{
