@@ -52,7 +52,8 @@ const Contact = () => {
   const { t } = useTranslation()
   const { locale } = useRouter()
 
-  const resumeLink = locale === 'en' ? '/resume.pdf' : '/hoja-de-vida.pdf'
+  const resumeLink =
+    locale === 'en' ? '/resume-juan-hamilton.pdf' : '/cv-juan-hamilton.pdf'
 
   const [name, setName] = useState('')
   const [nameError, setNameError] = useState(false)
