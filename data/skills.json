@@ -32,10 +32,6 @@
     "link": "https://getbootstrap.com/"
   },
   {
-    "name": "SQL",
-    "link": "https://www.w3schools.com/sql/"
-  },
-  {
     "name": "MongoDB",
     "link": "https://www.mongodb.com/"
   },
@@ -60,24 +56,8 @@
     "link": "https://sass-lang.com/"
   },
   {
-    "name": "Node.js",
-    "link": "https://nodejs.org/en/"
-  },
-  {
     "name": "Figma",
     "link": "https://www.figma.com/"
-  },
-  {
-    "name": "Express",
-    "link": "https://expressjs.com/"
-  },
-  {
-    "name": "Nest",
-    "link": "https://nestjs.com/"
-  },
-  {
-    "name": "Strapi",
-    "link": "https://strapi.io/"
   },
   {
     "name": "Prisma",
