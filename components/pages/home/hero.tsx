@@ -47,7 +47,7 @@ const Hero = React.forwardRef((_, ref) => {
 
   const resumeLink =
     locale === 'en'
-      ? '/cv-juan-hamilton.pdf'
+      ? '/resume-juan-hamilton.pdf'
       : '/hoja-de-vida-juan-hamilton.pdf';
 
   return (
